@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11198.2" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="animacion_gym_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0L-Er-N56">
+                                <frame key="frameInset" minX="16" minY="530" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ven aquí"/>
+                                <connections>
+                                    <action selector="actionMoverAqui:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJq-Mh-Gff"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ewO-Ab-N4o">
+                                <frame key="frameInset" minX="252" minY="530" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ven aquí"/>
+                                <connections>
+                                    <action selector="actionMoverAqui:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z3K-sE-unP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aqp-C7-x2q">
+                                <frame key="frameInset" minX="252" minY="28" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ven aquí"/>
+                                <connections>
+                                    <action selector="actionMoverAqui:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbd-Nu-lBx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKh-x7-2UI">
+                                <frame key="frameInset" minX="10" minY="28" width="59" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ven aquí"/>
+                                <connections>
+                                    <action selector="actionMoverAqui:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z2u-Cl-OF3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GdB-Bs-2LY">
+                                <frame key="frameInset" minX="131" minY="530" width="58" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Caratula"/>
+                                <connections>
+                                    <segue destination="ZGd-qa-E7l" kind="presentation" id="j55-qV-8FD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="btVenAqui" destination="Q0L-Er-N56" id="Cpo-Q1-Bah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-24" y="126"/>
+        </scene>
+        <!--Caratula View Controller-->
+        <scene sceneID="Qr0-Dl-CAf">
+            <objects>
+                <viewController id="ZGd-qa-E7l" customClass="CaratulaViewController" customModule="animacion_gym_swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2gH-db-kEv"/>
+                        <viewControllerLayoutGuide type="bottom" id="O0J-vg-dQC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1kx-zs-xhV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q78-8X-azg">
+                                <frame key="frameInset" height="44" maxY="1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Cerrar" id="99U-Ia-vKf">
+                                        <connections>
+                                            <action selector="goBackMain:" destination="ZGd-qa-E7l" id="kHC-30-FRD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Zoom out" id="GVb-Te-KSC">
+                                        <connections>
+                                            <action selector="zoomOutAction:" destination="ZGd-qa-E7l" id="jd2-bE-Txw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Zoom in" id="goF-rk-qXM">
+                                        <connections>
+                                            <action selector="zoomInAction:" destination="ZGd-qa-E7l" id="DvS-dA-M2H"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Girar" id="s2c-M8-Fey">
+                                        <connections>
+                                            <action selector="girarAction:" destination="ZGd-qa-E7l" id="rkr-eY-maK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yr3-cJ-sDn">
+                                <frame key="frameInset" width="320" height="524"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="vistaCaratula" destination="Yr3-cJ-sDn" id="I9L-zM-Exn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W3K-FD-93m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="126"/>
+        </scene>
+    </scenes>
+</document>

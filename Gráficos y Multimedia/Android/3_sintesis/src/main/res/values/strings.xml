@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Síntesis de voz</string>
+    <string name="butRead">Leer</string>
+    <string name="radioSpanish">Español</string>
+    <string name="radioEnglish">Inglés</string>
+    <string name="writehere">Escribe aquí</string>
+</resources>

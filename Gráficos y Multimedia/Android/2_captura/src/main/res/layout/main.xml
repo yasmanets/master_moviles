@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <SurfaceView
+        android:id="@+id/superficie"
+        android:layout_width="320dip"
+        android:layout_height="240dip" />
+    <Button
+        android:id="@+id/grabar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Grabar" />
+    <Button
+        android:id="@+id/parar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="Parar" />
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "644039796215",
+    "project_id": "filmoteca-200b8",
+    "storage_bucket": "filmoteca-200b8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644039796215:android:25590662897edab9073af2",
+        "android_client_info": {
+          "package_name": "es.ua.eps.mm2021.kotlin.filmoteca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "644039796215-q3v0sps74nbrf9dhr707oqn3cd0kjan0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3vbPQz5sx2c3mhleySHn6LJUeA9PWwQs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644039796215-q3v0sps74nbrf9dhr707oqn3cd0kjan0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

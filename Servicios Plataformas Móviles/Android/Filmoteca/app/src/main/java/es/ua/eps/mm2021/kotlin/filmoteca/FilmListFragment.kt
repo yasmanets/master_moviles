@@ -34,6 +34,7 @@ class FilmListFragment : Fragment() {
         setHasOptionsMenu(true)
 
         FilmDataSource.films.forEach { f -> films.add(f) }
+        this.processNotification()
 
         recyclerView = view.findViewById(R.id.filmList)
         recyclerView?.itemAnimator = DefaultItemAnimator()
@@ -150,5 +151,15 @@ class FilmListFragment : Fragment() {
         f.imdbUrl = "https://www.imdb.com/title/tt1675434/?ref_=nv_sr_srsg_0"
         films.add(f)
         FilmDataSource.films.add(f)
+    }
+
+    private fun processNotification() {
+        val args = this.arguments
+        val action = args?.getString("action")
+        val title = args?.getString("title")?: ""
+        if (action == "remove") {
+            val film = films.find { it.title == title }
+            films.remove(film)
+        }
     }
 }

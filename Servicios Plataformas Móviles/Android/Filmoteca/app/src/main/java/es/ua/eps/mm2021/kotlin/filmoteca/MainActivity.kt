@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         if (findViewById<View?>(R.id.fragment_container) != null) {
             if (savedInstanceState != null) return
             val filmListFragment = FilmListFragment()
+            filmListFragment.arguments = intent.extras
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, filmListFragment).commit()
         }

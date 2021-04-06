@@ -26,6 +26,18 @@
                 android:value="es.ua.eps.filmoteca.FilmListActivity" />
         </activity>
         <activity android:name="es.ua.eps.mm2021.kotlin.filmoteca.FilmEditActivity" />
+
+        <service android:name=".messaging.MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
     </application>
+
 
 </manifest>

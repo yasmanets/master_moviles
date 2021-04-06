@@ -61,4 +61,12 @@ object FilmDataSource {
         f.year = 2016
         films.add(f)
     }
+
+    fun removeFilm(title: String) {
+        for (film in films) {
+            if (film.title.equals(title)) {
+                films.remove(film)
+            }
+        }
+    }
 }

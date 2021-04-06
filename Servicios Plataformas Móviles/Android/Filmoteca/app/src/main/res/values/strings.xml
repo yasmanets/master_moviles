@@ -42,4 +42,6 @@
     <string name="addFilm">Añadir película</string>
     <string name="intouchables">Intocable</string>
     <string name="delete">Eliminar</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="disconnect">Desconectar cuenta</string>
 </resources>

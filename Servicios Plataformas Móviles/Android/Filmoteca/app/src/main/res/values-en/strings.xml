@@ -43,4 +43,6 @@
     <string name="addFilm">Add film</string>
     <string name="intouchables">Intouchables</string>
     <string name="delete">Delete</string>
+    <string name="logout">Close session</string>
+    <string name="disconnect">Disconnect account</string>
 </resources>

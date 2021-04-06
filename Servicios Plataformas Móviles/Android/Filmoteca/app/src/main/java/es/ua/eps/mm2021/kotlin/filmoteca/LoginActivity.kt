@@ -1,9 +1,9 @@
 package es.ua.eps.mm2021.kotlin.filmoteca
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -13,8 +13,10 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 
 const val PLAY_SERVICES_SIGN_IN = 1
+val user = UserData()
 
 class LoginActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -27,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         val mGoogleSigInClient = GoogleSignIn.getClient(this, gso)
+        user.gsClient = mGoogleSigInClient
         signIn.setOnClickListener {
             signIn(mGoogleSigInClient)
         }
@@ -63,6 +66,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleAccount(account: GoogleSignInAccount?) {
         if (account != null) {
+            user.account = account
             val mainActivityIntent = Intent(this, MainActivity::class.java)
             startActivity(mainActivityIntent)
         }

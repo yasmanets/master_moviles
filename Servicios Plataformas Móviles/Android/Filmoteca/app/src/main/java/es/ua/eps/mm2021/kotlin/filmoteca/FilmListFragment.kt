@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import es.ua.eps.mm2021.kotlin.filmoteca.adapters.RecyclerAdapter
 import es.ua.eps.mm2021.kotlin.filmoteca.film.*
 
@@ -116,6 +118,20 @@ class FilmListFragment : Fragment() {
                 val intent = Intent(view?.context, AboutActivity::class.java)
                 startActivity(intent)
 
+            }
+            R.id.logout -> {
+                this.activity?.let {
+                    user.gsClient?.signOut()?.addOnCompleteListener(it) {
+                        this.activity?.finish()
+                    }
+                }
+            }
+            R.id.disconnect -> {
+                this.activity?.let {
+                    user.gsClient?.revokeAccess()?.addOnCompleteListener(it) {
+                        this.activity?.finish()
+                    }
+                }
             }
             else -> return false
         }

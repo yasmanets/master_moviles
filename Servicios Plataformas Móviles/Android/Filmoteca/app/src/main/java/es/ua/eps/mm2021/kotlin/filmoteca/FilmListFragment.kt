@@ -157,9 +157,26 @@ class FilmListFragment : Fragment() {
         val args = this.arguments
         val action = args?.getString("action")
         val title = args?.getString("title")?: ""
+        val film = films.find { it.title == title }
         if (action == "remove") {
-            val film = films.find { it.title == title }
             films.remove(film)
+        }
+        else if (action == "add") {
+            if (film == null) {
+                val director = args?.getString("director")?: ""
+                val imdbUrl = args?.getString("imdbUrl")?: ""
+                val year = args?.getInt("year", 0)
+                val genre = args?.getInt("genre", 0)
+                val format = args?.getInt("format", 0)
+                val film = Film()
+                film.title = title
+                film.director = director
+                film.imdbUrl = imdbUrl
+                film.year = year
+                film.genre = genre
+                film.format = format
+                films.add(film)
+            }
         }
     }
 }

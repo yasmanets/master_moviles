@@ -103,7 +103,7 @@ class FilmDataFragment : Fragment() {
             val mapIntent = Intent(view.context, MapsActivity::class.java)
             mapIntent.putExtra("title", filmTitle?.text)
             mapIntent.putExtra("director", directorName?.text)
-            mapIntent.putExtra("year", filmYear?.text)
+            mapIntent.putExtra("year", Integer.parseInt(filmYear?.text as String))
             mapIntent.putExtra("latitude", latitude)
             mapIntent.putExtra("longitude", longitude)
             startActivity(mapIntent)
@@ -121,6 +121,7 @@ class FilmDataFragment : Fragment() {
         editMovie = view.findViewById(R.id.editFilm)
         goToMain = view.findViewById(R.id.goMain)
         twitter = view.findViewById(R.id.twitter)
+        maps = view.findViewById(R.id.maps)
         preferences = activity?.getSharedPreferences("preferences", Context.MODE_PRIVATE)!!
         editor = preferences.edit()
     }
@@ -137,6 +138,8 @@ class FilmDataFragment : Fragment() {
         filmComments?.text = films[position].comments
         latitude = films[position].latitude!!
         longitude = films[position].longitude!!
+        Log.d("FIlmoteca", "1 lat ${films[position]}")
+        Log.d("FIlmoteca", "1 long ${films[position].latitude}")
     }
 
     private fun getType(position: Int): String {
@@ -179,6 +182,8 @@ class FilmDataFragment : Fragment() {
         filmType?.text = String.format(getType(films[position].format) + ", " + getGender(films[position].genre))
         imdbLink = films[position].imdbUrl
         filmComments?.text = films[position].comments
+        latitude = films[position].latitude!!
+        longitude = films[position].longitude!!
     }
 
     inner class TwitterTask: AsyncTask<String, Int, Int>() {

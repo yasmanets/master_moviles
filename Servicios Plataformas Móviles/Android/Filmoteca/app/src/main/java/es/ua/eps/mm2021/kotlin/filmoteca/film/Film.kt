@@ -13,6 +13,7 @@ class Film {
     var comments: String? = null
     var latitude: Double? = null
     var longitude: Double? = null
+    var isGeoCer: Boolean? = null
 
     override fun toString(): String {
         return title?: R.string.withoutTitle.toString()

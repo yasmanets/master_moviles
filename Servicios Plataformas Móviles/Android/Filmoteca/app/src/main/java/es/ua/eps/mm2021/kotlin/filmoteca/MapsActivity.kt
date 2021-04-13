@@ -1,9 +1,19 @@
 package es.ua.eps.mm2021.kotlin.filmoteca
 
+import android.Manifest
 import android.content.Intent
+import android.content.IntentSender
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationManager
+import android.location.LocationProvider
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.common.api.ResolvableApiException
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -18,12 +28,25 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private var latitude: Double? = null
     private var longitude: Double? = null
 
+    private lateinit var mFusedLocation: FusedLocationProviderClient
+    private lateinit var locationRequest: LocationRequest
+    private lateinit var locationCallback: LocationCallback
+    private lateinit var currentLocation: Location
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        locationCallback = object: LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult) {
+                super.onLocationResult(locationResult)
+                if (locationResult === null) return
+                currentLocation = locationResult.lastLocation
+            }
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -41,6 +64,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isMapToolbarEnabled = true
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setInfoWindowAdapter(MarkerAdapter(this))
+
+
+        /* ------------- */
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 101)
+            return
+        }
+        mFusedLocation = LocationServices.getFusedLocationProviderClient(this)
+        mFusedLocation.lastLocation.addOnSuccessListener {
+            createLocationRequest()
+            val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
+            val client = LocationServices.getSettingsClient(this)
+            val task = client.checkLocationSettings(builder.build())
+            task.addOnSuccessListener { response ->
+                Log.d("Filmoteca", "onSuccess()")
+                val states = response.locationSettingsStates
+                Log.d("Filmoteca", "${states.isLocationPresent}")
+                if (states.isLocationPresent) {
+                    Log.d("Filmoteca", "onSuccess()")
+                    mFusedLocation.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper())
+                }
+            }
+                .addOnFailureListener { ex ->
+                    Log.e("Filmoteca", "onFailure()", ex)
+                    if (ex is ResolvableApiException) {
+                        // User dialog
+                        try {
+                            ex.startResolutionForResult(this, 999)
+                        }
+                        catch (senEx: IntentSender.SendIntentException) {
+                            // ignorar el error
+                        }
+                    }
+                }
+        }
     }
 
     private fun getIntentValues(intent: Intent) {
@@ -49,5 +109,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         year = intent.getIntExtra("year", 0)
         latitude = intent.getDoubleExtra("latitude", 0.0)
         longitude = intent.getDoubleExtra("longitude", 0.0)
+    }
+
+    private fun createLocationRequest() {
+        locationRequest = LocationRequest.create()
+        locationRequest.interval = 10000
+        locationRequest.fastestInterval = 5000
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mFusedLocation.removeLocationUpdates(locationCallback)
     }
 }

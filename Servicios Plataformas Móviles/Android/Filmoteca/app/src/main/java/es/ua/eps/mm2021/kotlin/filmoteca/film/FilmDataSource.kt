@@ -17,6 +17,7 @@ object FilmDataSource {
         f.year = 2001
         f.latitude = -44.988464326541
         f.longitude = 169.9083106974349
+        f.isGeoCer = true
         films.add(f)
 
         f = Film()
@@ -30,6 +31,7 @@ object FilmDataSource {
         f.year = 2012
         f.latitude = -39.18454013860759
         f.longitude = 175.55133923145817
+        f.isGeoCer = true
         films.add(f)
 
         f = Film()
@@ -43,6 +45,7 @@ object FilmDataSource {
         f.year = 2009
         f.latitude = 41.50139552603034
         f.longitude = -5.7545485442780855
+        f.isGeoCer = true
         films.add(f)
 
         f = Film()
@@ -56,6 +59,7 @@ object FilmDataSource {
         f.year = 2002
         f.latitude = 40.41870696090514
         f.longitude = -3.6944397884782103
+        f.isGeoCer = true
         films.add(f)
 
         f = Film()
@@ -69,6 +73,7 @@ object FilmDataSource {
         f.year = 2016
         f.latitude = 39.469922166139185
         f.longitude = -0.3771979308284833
+        f.isGeoCer = true
         films.add(f)
     }
 

@@ -23,9 +23,8 @@ class GeofenceBroadcastReciver: BroadcastReceiver() {
 
         if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER || geofenceTransition == Geofence.GEOFENCE_TRANSITION_EXIT) {
             val triggeringGeofences = geofencingEvent.triggeringGeofences
-            val geofenceTransitionDetails = getGeofenceTransitionDetails(geofenceTransition)
+            val geofenceTransitionDetails = getGeofenceTransitionDetails(context!!, geofenceTransition)
 
-            sendNotification(context!!, geofenceTransitionDetails)
             Log.i("Filmoteca", "$geofenceTransitionDetails")
         } else {
             // Log the error.
@@ -33,15 +32,11 @@ class GeofenceBroadcastReciver: BroadcastReceiver() {
         }
     }
 
-    private fun getGeofenceTransitionDetails(geofenceTransition: Int): String {
-        return when (geofenceTransition) {
-            1 -> "Entra en el geocerdado"
-            2 -> "Sale del geocercado"
+    private fun getGeofenceTransitionDetails(context: Context, geofenceTransition: Int) {
+        when (geofenceTransition) {
+            1 -> Toast.makeText(context, "Estas a 500 metros del lugar donde se rodó la película", Toast.LENGTH_LONG).show()
+            2 -> Log.i("Filmoteca", "Sale del círculo")
             else -> ""
         }
-    }
-
-    private fun sendNotification(context: Context, geofenceTransitionDetails: String) {
-        Toast.makeText(context, geofenceTransitionDetails, Toast.LENGTH_LONG).show()
     }
 }

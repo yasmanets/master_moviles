@@ -45,7 +45,7 @@ object FilmDataSource {
         f.year = 2009
         f.latitude = 41.50139552603034
         f.longitude = -5.7545485442780855
-        f.isGeoCer = true
+        f.isGeoCer = false
         films.add(f)
 
         f = Film()

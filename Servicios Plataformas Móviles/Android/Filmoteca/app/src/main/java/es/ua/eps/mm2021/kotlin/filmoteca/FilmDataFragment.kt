@@ -55,6 +55,7 @@ class FilmDataFragment : Fragment() {
     private lateinit var editor: SharedPreferences.Editor
     private var longitude: Double = 0.0
     private var latitude: Double = 0.0
+    private var isGeofence: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -106,6 +107,7 @@ class FilmDataFragment : Fragment() {
             mapIntent.putExtra("year", Integer.parseInt(filmYear?.text as String))
             mapIntent.putExtra("latitude", latitude)
             mapIntent.putExtra("longitude", longitude)
+            mapIntent.putExtra("geofence", isGeofence)
             startActivity(mapIntent)
         }
     }
@@ -138,8 +140,6 @@ class FilmDataFragment : Fragment() {
         filmComments?.text = films[position].comments
         latitude = films[position].latitude!!
         longitude = films[position].longitude!!
-        Log.d("FIlmoteca", "1 lat ${films[position]}")
-        Log.d("FIlmoteca", "1 long ${films[position].latitude}")
     }
 
     private fun getType(position: Int): String {
@@ -184,6 +184,7 @@ class FilmDataFragment : Fragment() {
         filmComments?.text = films[position].comments
         latitude = films[position].latitude!!
         longitude = films[position].longitude!!
+        isGeofence = films[position].isGeoCer!!
     }
 
     inner class TwitterTask: AsyncTask<String, Int, Int>() {

@@ -37,7 +37,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var locationCallback: LocationCallback
     private lateinit var currentLocation: Location
     private lateinit var geofencingClient: GeofencingClient
-    private var GEOFENCE_RADIOUS = 500
+    private var GEOFENCE_RADIUS = 500
 
     private val geofencePendingIntent: PendingIntent by lazy {
         val intent = Intent(this, GeofenceBroadcastReciver::class.java)
@@ -87,12 +87,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.isMyLocationEnabled = true
         mMap.addCircle(CircleOptions()
             .center(position)
-            .radius(GEOFENCE_RADIOUS.toDouble())
+            .radius(GEOFENCE_RADIUS.toDouble())
             .strokeColor(Color.argb(64,255, 0, 0))
             .fillColor(Color.argb(64,255, 0, 0))
         )
-
-        /* ------------- */
 
         mFusedLocation = LocationServices.getFusedLocationProviderClient(this)
         mFusedLocation.lastLocation.addOnSuccessListener {
@@ -120,17 +118,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
         }
 
-        val geofence: Geofence = Geofence.Builder().setRequestId(title)
-            .setCircularRegion(latitude!!, longitude!!, GEOFENCE_RADIOUS.toFloat())
-            .setExpirationDuration(Geofence.NEVER_EXPIRE)
-            .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER or Geofence.GEOFENCE_TRANSITION_EXIT)
-            .build()
-        geofencingClient.addGeofences(getGeofencingRequest(geofence), geofencePendingIntent)?.run {
-            addOnSuccessListener {
-                //geo added
-            }
-            addOnFailureListener {
-                // failed
+        if (intent.getBooleanExtra("geofence", true) === true) {
+            val geofence: Geofence = Geofence.Builder().setRequestId(title)
+                .setCircularRegion(latitude!!, longitude!!, GEOFENCE_RADIUS.toFloat())
+                .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER or Geofence.GEOFENCE_TRANSITION_EXIT)
+                .build()
+            geofencingClient.addGeofences(getGeofencingRequest(geofence), geofencePendingIntent)?.run {
+                addOnSuccessListener {
+                    //geo added
+                }
+                addOnFailureListener {
+                    // failed
+                }
             }
         }
     }

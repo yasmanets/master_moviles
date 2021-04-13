@@ -11,6 +11,8 @@ class Film {
     var format = 0
     var imdbUrl: String? = null
     var comments: String? = null
+    var latitude: Double? = null
+    var longitude: Double? = null
 
     override fun toString(): String {
         return title?: R.string.withoutTitle.toString()

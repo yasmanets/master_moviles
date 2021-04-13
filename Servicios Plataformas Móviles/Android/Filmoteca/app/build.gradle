@@ -15,6 +15,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        Properties properties = new Properties()
+        if (rootProject.file("local.properties").exists()) {
+            properties.load(rootProject.file("local.properties").newDataInputStream())
+        }
+        // Inject the Maps API key into the manifest
+        manifestPlaceholders = [ mapsApiKey : properties.getProperty("MAPS_API_KEY", "AIzaSyBQkjQ7dBsjskovzKafzZmU8-y9oInQLvE") ]
+
     }
 
     buildTypes {
@@ -44,4 +52,5 @@ dependencies {
 
     implementation 'com.github.scribejava:scribejava-apis:6.9.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

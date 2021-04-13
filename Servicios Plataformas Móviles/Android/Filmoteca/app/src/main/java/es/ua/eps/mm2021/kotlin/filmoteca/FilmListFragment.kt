@@ -51,7 +51,6 @@ class FilmListFragment : Fragment() {
                 filmDataFragment.setSelectedFilm(position)
             }
             else {
-                Log.d("list", "else")
                 filmDataFragment = FilmDataFragment()
                 val args = Bundle()
                 args.putInt(FILM_CLICKED, position)

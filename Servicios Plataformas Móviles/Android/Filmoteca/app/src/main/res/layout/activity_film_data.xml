@@ -109,13 +109,27 @@
         android:layout_alignParentLeft="true" />
 
     <Button
+        android:id="@+id/maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mapa"
+        android:layout_below="@id/filmType"
+        android:layout_toEndOf="@id/twitter"
+        android:layout_toStartOf="@id/showIMDB"
+        android:layout_marginTop="@dimen/widgets_margin"
+        android:layout_marginLeft="@dimen/widgets_margin"
+        android:layout_marginStart="@dimen/widgets_margin"
+        android:layout_toRightOf="@id/twitter"
+        android:layout_toLeftOf="@id/showIMDB" />
+
+    <Button
         android:id="@+id/showIMDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/showIMDB"
         android:layout_below="@id/filmType"
-        android:layout_toRightOf="@id/filmImage"
-        android:layout_toEndOf="@+id/filmImage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/widgets_margin"
         android:layout_marginLeft="@dimen/widgets_margin"
         android:layout_marginStart="@dimen/widgets_margin" />

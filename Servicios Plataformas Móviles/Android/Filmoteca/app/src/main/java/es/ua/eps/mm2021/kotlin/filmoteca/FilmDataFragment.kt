@@ -47,11 +47,14 @@ class FilmDataFragment : Fragment() {
     private var imdbLink: String? = ""
     private var filmComments: TextView? = null
     private var twitter: Button? = null
+    private var maps: Button? = null
     private var pinCode: String = ""
     private lateinit var requestToken: OAuth1RequestToken
     private lateinit var service: OAuth10aService
     private lateinit var preferences: SharedPreferences
     private lateinit var editor: SharedPreferences.Editor
+    private var longitude: Double = 0.0
+    private var latitude: Double = 0.0
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -95,6 +98,16 @@ class FilmDataFragment : Fragment() {
                 TwitterTask().execute()
             }
         }
+
+        maps?.setOnClickListener {
+            val mapIntent = Intent(view.context, MapsActivity::class.java)
+            mapIntent.putExtra("title", filmTitle?.text)
+            mapIntent.putExtra("director", directorName?.text)
+            mapIntent.putExtra("year", filmYear?.text)
+            mapIntent.putExtra("latitude", latitude)
+            mapIntent.putExtra("longitude", longitude)
+            startActivity(mapIntent)
+        }
     }
 
     private fun getReferences(view: View) {
@@ -122,6 +135,8 @@ class FilmDataFragment : Fragment() {
         filmType?.text = String.format(getType(films[position].format) + ", " + getGender(films[position].genre))
         imdbLink = films[position].imdbUrl
         filmComments?.text = films[position].comments
+        latitude = films[position].latitude!!
+        longitude = films[position].longitude!!
     }
 
     private fun getType(position: Int): String {

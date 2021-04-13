@@ -3,6 +3,12 @@
     package="es.ua.eps.mm2021.kotlin.filmoteca">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,31 +18,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="es.ua.eps.mm2021.kotlin.filmoteca.LoginActivity">
+        <activity android:name=".MapsActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${mapsApiKey}" />
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="twittersdk://" android:host="callback" />
+
+                <data
+                    android:host="callback"
+                    android:scheme="twittersdk://" />
             </intent-filter>
         </activity>
         <activity
-            android:name="es.ua.eps.mm2021.kotlin.filmoteca.AboutActivity"
-            android:parentActivityName="es.ua.eps.mm2021.kotlin.filmoteca.MainActivity">
+            android:name=".AboutActivity"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android:support.PARENT_ACTIVITY"
                 android:value="es.ua.eps.filmoteca.FilmListActivity" />
         </activity>
-        <activity android:name="es.ua.eps.mm2021.kotlin.filmoteca.FilmEditActivity" />
+        <activity android:name=".FilmEditActivity" />
 
-        <service android:name=".messaging.MessagingService"
+        <service
+            android:name=".messaging.MessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -47,6 +64,5 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
     </application>
-
 
 </manifest>

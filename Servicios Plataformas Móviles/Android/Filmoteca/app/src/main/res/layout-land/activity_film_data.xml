@@ -120,6 +120,17 @@
         android:layout_marginStart="@dimen/widgets_margin" />
 
     <Button
+        android:id="@+id/maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mapa"
+        android:layout_below="@id/comments"
+        android:layout_toRightOf="@id/twitter"
+        android:layout_marginTop="@dimen/widgets_margin"
+        android:layout_marginLeft="@dimen/widgets_margin"
+        android:layout_marginStart="@dimen/widgets_margin" />
+
+    <Button
         android:id="@+id/showIMDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

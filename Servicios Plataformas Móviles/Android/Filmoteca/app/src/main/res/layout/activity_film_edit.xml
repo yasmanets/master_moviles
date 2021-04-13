@@ -99,6 +99,16 @@
         android:textSize="22sp"
         android:inputType="textMultiLine" />
 
+    <Button
+        android:id="@+id/geofence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar geocercado"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/widgets_margin"
+        android:layout_marginLeft="@dimen/widgets_margin"
+        android:layout_marginStart="@dimen/widgets_margin"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

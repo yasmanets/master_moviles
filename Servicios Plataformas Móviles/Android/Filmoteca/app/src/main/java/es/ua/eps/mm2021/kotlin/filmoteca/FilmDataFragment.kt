@@ -2,7 +2,6 @@ package es.ua.eps.mm2021.kotlin.filmoteca
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.app.Application
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -16,7 +15,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.github.scribejava.apis.TwitterApi
 import com.github.scribejava.core.builder.ServiceBuilder
 import com.github.scribejava.core.model.OAuth1AccessToken
@@ -24,13 +22,9 @@ import com.github.scribejava.core.model.OAuth1RequestToken
 import com.github.scribejava.core.model.OAuthRequest
 import com.github.scribejava.core.model.Verb
 import com.github.scribejava.core.oauth.OAuth10aService
-import com.github.scribejava.core.oauth.OAuth20Service
-import com.github.scribejava.core.oauth.OAuthService
 import com.google.gson.Gson
 import es.ua.eps.mm2021.kotlin.filmoteca.film.FilmDataSource
-import org.json.JSONObject
 import java.lang.Exception
-import java.util.concurrent.Future
 
 private const val EDIT_ACTIVITY_CODE = 1
 
@@ -68,7 +62,7 @@ class FilmDataFragment : Fragment() {
 
         activity?.actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val position = arguments?.getInt(FILM_CLICKED)
+        val position = arguments?.getInt("FILM_CLICKED")
         val intent = activity?.intent
         getReferences(view)
         if (position != null) {
@@ -77,7 +71,7 @@ class FilmDataFragment : Fragment() {
 
         editMovie?.setOnClickListener {
             val editIntent = Intent(view.context, FilmEditActivity::class.java)
-            editIntent.putExtra(FILM_CLICKED, intent?.getIntExtra(FILM_CLICKED, 0))
+            editIntent.putExtra(FILM_CLICKED, intent?.getIntExtra("FILM_CLICKED", 0))
             startActivityForResult(editIntent, EDIT_ACTIVITY_CODE)
         }
         goToMain?.setOnClickListener {

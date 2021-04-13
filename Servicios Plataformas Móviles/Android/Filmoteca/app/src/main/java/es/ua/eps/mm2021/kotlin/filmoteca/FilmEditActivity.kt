@@ -20,6 +20,7 @@ class FilmEditActivity : AppCompatActivity() {
     private var filmComments: EditText? = null
     private var saveChanges: Button? = null
     private var cancelChanges: Button? = null
+    private var changeGeofence: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +53,12 @@ class FilmEditActivity : AppCompatActivity() {
         filmComments = findViewById(R.id.editComments)
         saveChanges = findViewById(R.id.saveChanges)
         cancelChanges = findViewById(R.id.cancelChanges)
+        changeGeofence = findViewById(R.id.geofence)
     }
 
     private fun setViewContent(intent: Intent) {
         val films = FilmDataSource.films
-        val position = intent.getIntExtra(FILM_CLICKED, 0)
+        val position = intent.getIntExtra("FILM_CLICKED", 0)
         filmImage?.setImageResource(films[position].imageResId)
         filmTitle?.text = Editable.Factory.getInstance().newEditable(films[position].title)
         filmDirector?.text = Editable.Factory.getInstance().newEditable(films[position].director)
@@ -65,6 +67,21 @@ class FilmEditActivity : AppCompatActivity() {
         filmGender?.setSelection(films[position].genre)
         filmFormat?.setSelection(films[position].format)
         filmComments?.text = Editable.Factory.getInstance().newEditable(films[position].comments)
+        if (films[position].isGeoCer!!) {
+            changeGeofence?.text = "Eliminar geocercado"
+        }
+        else {
+            changeGeofence?.text = "Añadir geocercado"
+        }
+        changeGeofence?.setOnClickListener {
+            films[position].isGeoCer = !films[position].isGeoCer!!
+            if (films[position].isGeoCer!!) {
+                changeGeofence?.text = "Eliminar geocercado"
+            }
+            else {
+                changeGeofence?.text = "Añadir geocercado"
+            }
+        }
     }
 
     private fun getUserValues(intent: Intent) {

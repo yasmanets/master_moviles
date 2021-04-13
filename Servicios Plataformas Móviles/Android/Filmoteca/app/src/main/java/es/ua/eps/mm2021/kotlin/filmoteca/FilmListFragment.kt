@@ -2,14 +2,11 @@ package es.ua.eps.mm2021.kotlin.filmoteca
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import es.ua.eps.mm2021.kotlin.filmoteca.adapters.RecyclerAdapter
 import es.ua.eps.mm2021.kotlin.filmoteca.film.*
 
@@ -169,6 +166,7 @@ class FilmListFragment : Fragment() {
                 val format = args?.getInt("format", 0)
                 val longitude = args?.getDouble("longitud", 0.0)
                 val latitude = args?.getDouble("latitude", 0.0)
+                val isGeofence = args?.getBoolean("geofence")
                 val film = Film()
                 film.title = title
                 film.director = director
@@ -178,6 +176,7 @@ class FilmListFragment : Fragment() {
                 film.format = format
                 film.latitude = latitude
                 film.longitude = longitude
+                film.isGeoCer = isGeofence
                 films.add(film)
             }
         }

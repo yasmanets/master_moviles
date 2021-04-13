@@ -109,11 +109,22 @@
         android:layout_marginStart="@dimen/widgets_margin" />
 
     <Button
+        android:id="@+id/twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="twitter"
+        android:layout_below="@id/comments"
+        android:layout_toRightOf="@id/filmImage"
+        android:layout_marginTop="@dimen/widgets_margin"
+        android:layout_marginLeft="@dimen/widgets_margin"
+        android:layout_marginStart="@dimen/widgets_margin" />
+
+    <Button
         android:id="@+id/showIMDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/showIMDB"
-        android:layout_below="@id/comments"
+        android:layout_below="@id/twitter"
         android:layout_toRightOf="@id/filmImage"
         android:layout_toEndOf="@+id/filmImage"
         android:layout_marginTop="@dimen/widgets_land_margin"
@@ -125,7 +136,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/goMain"
-        android:layout_below="@id/comments"
+        android:layout_below="@id/twitter"
         android:layout_toRightOf="@id/showIMDB"
         android:layout_toEndOf="@+id/showIMDB"
         android:layout_marginTop="@dimen/widgets_land_margin"
@@ -139,7 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/editFilm"
-        android:layout_below="@id/comments"
+        android:layout_below="@id/twitter"
         android:layout_toRightOf="@id/goMain"
         android:layout_toEndOf="@+id/goMain"
         android:layout_marginTop="@dimen/widgets_land_margin"

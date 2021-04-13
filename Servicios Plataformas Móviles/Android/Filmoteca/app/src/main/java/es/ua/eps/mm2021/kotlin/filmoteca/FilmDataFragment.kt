@@ -1,18 +1,36 @@
 package es.ua.eps.mm2021.kotlin.filmoteca
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Application
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
+import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.github.scribejava.apis.TwitterApi
+import com.github.scribejava.core.builder.ServiceBuilder
+import com.github.scribejava.core.model.OAuth1AccessToken
+import com.github.scribejava.core.model.OAuth1RequestToken
+import com.github.scribejava.core.model.OAuthRequest
+import com.github.scribejava.core.model.Verb
+import com.github.scribejava.core.oauth.OAuth10aService
+import com.github.scribejava.core.oauth.OAuth20Service
+import com.github.scribejava.core.oauth.OAuthService
+import com.google.gson.Gson
 import es.ua.eps.mm2021.kotlin.filmoteca.film.FilmDataSource
+import org.json.JSONObject
+import java.lang.Exception
+import java.util.concurrent.Future
 
 private const val EDIT_ACTIVITY_CODE = 1
 
@@ -28,6 +46,12 @@ class FilmDataFragment : Fragment() {
     private var goToMain: Button? = null
     private var imdbLink: String? = ""
     private var filmComments: TextView? = null
+    private var twitter: Button? = null
+    private var pinCode: String = ""
+    private lateinit var requestToken: OAuth1RequestToken
+    private lateinit var service: OAuth10aService
+    private lateinit var preferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -63,6 +87,14 @@ class FilmDataFragment : Fragment() {
                 startActivity(imdbIntent)
             }
         }
+        twitter?.setOnClickListener {
+            if (preferences.contains("token")) {
+                PublishTweet().execute()
+            }
+            else {
+                TwitterTask().execute()
+            }
+        }
     }
 
     private fun getReferences(view: View) {
@@ -75,6 +107,9 @@ class FilmDataFragment : Fragment() {
         showIMDB = view.findViewById(R.id.showIMDB)
         editMovie = view.findViewById(R.id.editFilm)
         goToMain = view.findViewById(R.id.goMain)
+        twitter = view.findViewById(R.id.twitter)
+        preferences = activity?.getSharedPreferences("preferences", Context.MODE_PRIVATE)!!
+        editor = preferences.edit()
     }
 
     private fun setViewContent(intent: Intent) {
@@ -111,7 +146,6 @@ class FilmDataFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         when (resultCode) {
             Activity.RESULT_OK -> {
                 setViewContent(activity?.intent!!)
@@ -131,4 +165,83 @@ class FilmDataFragment : Fragment() {
         imdbLink = films[position].imdbUrl
         filmComments?.text = films[position].comments
     }
+
+    inner class TwitterTask: AsyncTask<String, Int, Int>() {
+        override fun onPreExecute() {
+            super.onPreExecute()
+            val inflater = LayoutInflater.from(activity)
+            val view = inflater.inflate(R.layout.dialog_view, null)
+
+            val alertDialog = AlertDialog.Builder(activity)
+            alertDialog.setView(view)
+            alertDialog.setPositiveButton("OK", ({ _: DialogInterface, _: Int ->
+                pinCode = view.findViewById<EditText>(R.id.editPin).text.toString()
+                GetAccessToken().execute()
+            }))
+            alertDialog.show()
+        }
+
+        override fun doInBackground(vararg p0: String?): Int {
+            service = ServiceBuilder("UGca9tUwLW3j6PgesL4r18CfL").apiSecret("5xZKl2HUKqA3EuYsdDauytKkilxGHtvdrsYRS7504nOTWYCIpx")
+                .callback("oob")
+                .build(TwitterApi.instance())
+
+            requestToken = service.requestToken
+            val authUrl = service.getAuthorizationUrl(requestToken)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(authUrl))
+            startActivity(intent)
+            return 1
+        }
+    }
+
+    inner class GetAccessToken: AsyncTask<String, Int, Int>() {
+        override fun doInBackground(vararg p0: String?): Int {
+            val accessToken: OAuth1AccessToken = service.getAccessToken(requestToken, pinCode)
+            val gson = Gson()
+            val token = gson.toJson(accessToken)
+            editor.putString("token", token).apply()
+            val request = OAuthRequest(Verb.GET, "https://api.twitter.com/1.1/account/verify_credentials.json")
+            service.signRequest(accessToken, request)
+            return try {
+                val repsonse = service?.execute(request)
+                Log.d("FIlmoteca", "res1: $repsonse")
+                1
+            } catch (e: Exception) {
+                e.printStackTrace()
+                0
+            }
+        }
+    }
+
+    inner class PublishTweet: AsyncTask<String, Int, Int>() {
+        override fun doInBackground(vararg p0: String?): Int {
+            service = ServiceBuilder("UGca9tUwLW3j6PgesL4r18CfL").apiSecret("5xZKl2HUKqA3EuYsdDauytKkilxGHtvdrsYRS7504nOTWYCIpx").build(TwitterApi.instance())
+            val token = preferences.getString("token", "")
+            val gson = Gson()
+            val accessToken = gson.fromJson(token, OAuth1AccessToken::class.java) ?: return 0
+            val tweet = "${filmTitle?.text} es una de mis películas favoritas de la ${getString(R.string.app_name)}"
+            val request = OAuthRequest(Verb.POST,"https://api.twitter.com/1.1/statuses/update.json?status=$tweet ")
+            service.signRequest(accessToken, request)
+            return try {
+                val response = service.execute(request)
+                Log.d("FIlmoteca", "res: $response")
+                1
+            } catch (e: Exception) {
+                e.printStackTrace()
+                0
+            }
+        }
+
+        override fun onPostExecute(result: Int?) {
+            super.onPostExecute(result)
+            if (result === 1) {
+                Toast.makeText(activity, "Tweet enviado con éxito", Toast.LENGTH_LONG).show()
+            }
+            else {
+                Toast.makeText(activity, "Se ha producido un error al enviar el tweet", Toast.LENGTH_LONG).show()
+            }
+
+        }
+    }
 }
+

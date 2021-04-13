@@ -167,6 +167,8 @@ class FilmListFragment : Fragment() {
                 val year = args?.getInt("year", 0)
                 val genre = args?.getInt("genre", 0)
                 val format = args?.getInt("format", 0)
+                val longitude = args?.getDouble("longitud", 0.0)
+                val latitude = args?.getDouble("latitude", 0.0)
                 val film = Film()
                 film.title = title
                 film.director = director
@@ -174,6 +176,8 @@ class FilmListFragment : Fragment() {
                 film.year = year
                 film.genre = genre
                 film.format = format
+                film.latitude = latitude
+                film.longitude = longitude
                 films.add(film)
             }
         }

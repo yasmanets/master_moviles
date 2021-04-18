@@ -1,9 +1,14 @@
 package es.ua.eps.mm2021.kotlin.filmoteca
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -11,16 +16,32 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import es.ua.eps.mm2021.kotlin.filmoteca.film.FilmDataSource
 
 const val PLAY_SERVICES_SIGN_IN = 1
 val user = UserData()
 
 class LoginActivity : AppCompatActivity() {
 
+    private lateinit var mInterstitialAd: InterstitialAd
+    private lateinit var loginContext: Context
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        this.loginContext = this.applicationContext
+        MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
+        mInterstitialAd = InterstitialAd(this)
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+        mInterstitialAd.adListener = object: AdListener() {
+            override fun onAdClosed() {
+                super.onAdClosed()
+                var intent = Intent(loginContext, MainActivity::class.java)
+                intent = this@LoginActivity.notification(intent)
+                startActivity(intent)
+            }
+        }
 
         val signIn = findViewById<SignInButton>(R.id.signInButton)
         signIn.setSize(SignInButton.SIZE_STANDARD)
@@ -69,10 +90,16 @@ class LoginActivity : AppCompatActivity() {
     private fun handleAccount(account: GoogleSignInAccount?) {
         if (account != null) {
             user.account = account
-            var mainActivityIntent = Intent(this, MainActivity::class.java)
-            mainActivityIntent = this.notification(mainActivityIntent)
-            startActivity(mainActivityIntent)
+            if(mInterstitialAd.isLoaded) {
+                mInterstitialAd.show()
+            }
         }
+    }
+
+    public fun loadFilmList() {
+        var mainActivityIntent = Intent(this, MainActivity::class.java)
+        mainActivityIntent = this.notification(mainActivityIntent)
+        startActivity(mainActivityIntent)
     }
 
     private fun notification(mainIntent: Intent): Intent {

@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.main.activity_login.*
 
 const val PLAY_SERVICES_SIGN_IN = 1
 val user = UserData()
@@ -33,13 +34,18 @@ class LoginActivity : AppCompatActivity() {
         MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713")
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
-        mInterstitialAd.loadAd(AdRequest.Builder().build())
         mInterstitialAd.adListener = object: AdListener() {
             override fun onAdClosed() {
                 super.onAdClosed()
                 var intent = Intent(loginContext, MainActivity::class.java)
                 intent = this@LoginActivity.notification(intent)
                 startActivity(intent)
+            }
+
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                mInterstitialAd.show()
+                signInButton.isEnabled = true
             }
         }
 
@@ -90,16 +96,9 @@ class LoginActivity : AppCompatActivity() {
     private fun handleAccount(account: GoogleSignInAccount?) {
         if (account != null) {
             user.account = account
-            if(mInterstitialAd.isLoaded) {
-                mInterstitialAd.show()
-            }
+            signInButton.isEnabled = false
+            mInterstitialAd.loadAd(AdRequest.Builder().build())
         }
-    }
-
-    public fun loadFilmList() {
-        var mainActivityIntent = Intent(this, MainActivity::class.java)
-        mainActivityIntent = this.notification(mainActivityIntent)
-        startActivity(mainActivityIntent)
     }
 
     private fun notification(mainIntent: Intent): Intent {

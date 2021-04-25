@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/calculadora_sencilla.css">
+    <script type="text/javascript" src="js/calculadora.js"></script>
+    <title>Calculadora sencilla</title>
+</head>
+<body>
+    <article>
+        <div class="operandos">
+            <p>Operando 1: </p>
+            <input id="operando1" type="text" />
+        </div>
+
+        <div class="operandos">
+            <p>Operando 2: </p>
+            <input id="operando2" type="text" />
+        </div>
+
+        <div class="resultado">
+            <p>Resultado: </p>
+            <span id="result"></span>
+        </div>
+
+        <div id="opciones">
+            <button type="button" onclick="suma()">
+                Suma
+            </button>
+
+            <button type="button" onclick="resta()">
+                Resta
+            </button>
+
+            <button type="button" onclick="multiplicacion()">
+                Multiplicaci&oacute;n
+            </button>
+
+            <button type="button" onclick="division()">
+                Divi&oacute;n
+            </button>
+        </div>
+        
+    </article>
+    
+</body>
+</html>

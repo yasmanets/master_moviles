@@ -1,0 +1,35 @@
+body {
+    height: 100%;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header, footer {
+    background-color: #0f0;
+}
+
+.blueBox {
+    height: 75px;
+    background-color: #009DBD;
+}
+
+.greyBox {
+    height: 75px;
+    background-color: #B5B5B5;
+}
+
+.blue {
+    height: 50px;
+    background-color: #00EDD7;
+}
+
+.orangeBox {
+    height: 75px;
+    background-color: #F18700;
+}
+

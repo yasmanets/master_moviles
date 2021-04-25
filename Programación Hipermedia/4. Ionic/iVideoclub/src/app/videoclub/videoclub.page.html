@@ -1,0 +1,107 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="inicio"
+        color="light"
+        text=""
+        mode="ios">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button *ngIf="modoLista == true;else cuadricula" (click)="cambiarVista()">
+        <ion-icon slot="icon-only" name="apps-sharp"></ion-icon>
+      </ion-button>
+      <ng-template #cuadricula>
+        <ion-button (click)="cambiarVista()">
+          <ion-icon slot="icon-only" name="reorder-four-sharp"></ion-icon>
+        </ion-button>
+      </ng-template>
+    </ion-buttons>
+
+    <ion-title>
+      iVideoclub
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Paso del ejercicio 1.1
+  <ion-content [fullscreen]="true">
+  <h1>iVideoclub</h1>
+  <p>Contenido de ejemplo</p>
+</ion-content> -->
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="listarPeliculas;else emptyList">
+    <ion-list *ngIf="modoLista == true;else modoGrid">
+      <ion-item *ngFor="let pelicula of listarPeliculas" (click)="verPaginaDetalle(pelicula.id)" detail>
+        <ion-thumbnail slot="start">
+          <ion-img src="{{pelicula.poster}}"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ pelicula.title }}</h2>
+          <p><strong>Director:</strong>{{ pelicula.director }}</p>
+          <p><strong>Año: </strong>{{ pelicula.year }}</p>
+        </ion-label>
+      </ion-item>
+
+      <!-- Prueba de los ejercicios anteriores
+      <ion-item button mode="ios" (click)="verPaginaDetalle(2)">
+        <ion-thumbnail slot="start">
+          <ion-img src="../../assets/posters/el_padrino_2.jpg"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>El Padrino. Parte II</h2>
+          <p><strong>Director:</strong>Francis Ford Copola</p>
+          <p><strong>Año: </strong>1974</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button mode="ios" (click)="verPaginaDetalle(3)">
+        <ion-thumbnail slot="start">
+          <ion-img src="../../assets/posters/la_lista_de_schindler.jpg"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>La lista de Schindler</h2>
+          <p><strong>Director:</strong>Steven Spielberg</p>
+          <p><strong>Año: </strong>1993</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item button mode="ios" (click)="verPaginaDetalle(4)">
+        <ion-thumbnail slot="start">
+          <ion-img src="../../assets/posters/pulp_fiction.jpg"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Pulp Fiction</h2>
+          <p><strong>Director:</strong>Quentin Tarantino</p>
+          <p><strong>Año: </strong>1994</p>
+        </ion-label>
+      </ion-item> -->
+    </ion-list>
+    <ng-template #modoGrid>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let pelicula of listarPeliculas; index as id" (click)="verPaginaDetalle(id)" size-xs="6" size-sm="4" size-md="3">
+            <ion-card>
+              <ion-img src="../../assets/posters/{{ pelicula.poster }}"></ion-img>
+
+              <ion-card-content>
+                <p>{{ pelicula.director }}</p>
+                <p><strong>Director: </strong>{{ pelicula.director }}</p>
+                <p><strong>Año: </strong>{{ pelicula.year }}</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+  </div>
+
+  <ng-template #emptyList>
+    <ion-text color="dark">
+      <h2>La lista está vacia</h2>
+    </ion-text>
+  </ng-template>
+</ion-content>

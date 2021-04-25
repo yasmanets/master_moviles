@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="autor"
+        color="light"
+        text=""
+        mode="ios">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Curriculum
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Paso del ejercicio 1.1
+  <ion-content [fullscreen]="true">
+  <h1>Curriculum</h1>
+  <p>Contenido de ejemplo</p>
+</ion-content> -->
+
+<ion-content>
+  <ion-list *ngIf="listaTrabajos">
+    <ion-item *ngFor="let trabajo of listaTrabajos">
+      <ion-label class="ion-text-wrap">
+        <h1>{{trabajo.fecha}}</h1>
+        <p>{{trabajo.desc}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+    <!-- Prueba del ejercicio de la sección anterior
+    <ion-item>
+      <ion-label>
+        <h1>2020-actualidad</h1>
+        <p>Estudiante del Máster Universitario en Ciberseguridad</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <h1>2017-2020</h1>
+        <p>Estudiante de Ingeniería Informática de Servicios y Aplicacioines en el campus de Segovia de la UVa</p>
+      </ion-label>
+    </ion-item> -->
+</ion-content>

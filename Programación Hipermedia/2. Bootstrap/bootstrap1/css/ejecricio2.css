@@ -1,0 +1,49 @@
+body {
+    height: 100%;
+}
+header, footer {
+    background-color: #0f0;
+}
+
+.row {
+    margin: 0rem;
+}
+.col-md-10 {
+    padding-right: 0rem;
+}
+
+.header {
+    height: 75px;
+}
+
+.footer {
+    height: 25px;
+}
+
+nav {
+    background-color: #f00;
+}
+
+.nav {
+    height: 100%;
+}
+
+.title {
+    background-color: darkmagenta;
+    height: 50px;
+}
+
+.orange {
+    height: 100px;
+    background-color: orange;
+}
+
+.blue {
+    background-color: #00f;
+    height: 75px;
+    margin: .2rem;
+}
+
+.col, [class*="col-"] {
+    padding: 0rem;
+}

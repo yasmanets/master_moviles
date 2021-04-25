@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejercicio 2</title>
+	<link rel="stylesheet" type="text/css" href="css/ejercicio2_css.css" />
+	<script type="text/javascript">
+		window.onload = function () {
+			const links = document.getElementsByTagName("a");
+			for (const link of links) {
+				if (link.href == document.URL) {
+					const parent = link.parentElement;
+					parent.classList.add("visited");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="header">
+        <img src="imgs/logo.gif" alt="Logo máster"/>
+        <h1>PHDM</h1>
+    </div>
+
+    <div id="nav">
+        <div class="navElement">
+            <a href="sesion01-ejercicio2.html">Inicio</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio2_contenidos.html">Contenidos</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio2_profesorado.html">Profesorado</a>
+        </div>
+    </div>
+
+	<div id="content">
+		<p>
+			El objetivo principal ser&aacute; obtener una capacitaci&oacute;n profesional 
+			para el desarrollo de aplicaciones nativas y aplicaciones web para dispositivos 
+			m&oacute;viles, incluyendo su concepci&oacute;n, dise&ntilde;o, desarrollo y distribuci&oacute;n.
+		</p>
+		
+		<p>
+			Este objetivo puede desglosarse en los siguientes:
+		</p>
+
+		<ul>
+			<li>
+				Comprender las particularidades espec&iacute;ficas del desarrollo de aplicaciones 
+				para dispositivos m&oacute;viles, en cuanto a interfaces de usuario, interacci&oacute;n 
+				con el mismo, restricciones impuestas por limitaciones de hardware, uso de sensores y 
+				conectividad.
+			</li>
+
+			<li>
+				Conocer las principales herramientas de desarrollo para diferentes tipos de dispositivos 
+				m&oacute;viles.
+			</li>
+
+			<li>
+				Aprender los conceptos t&eacute;cnicos necesarios para el desarrollo de aplicaciones 
+				profesionales para dispositivos m&oacute;viles basados en Android, iOS y Java ME. Se 
+				deber&aacute; ser capaz de poder completar un proyecto completo para estos sistemas.
+			</li>
+
+			<li>
+				Capacitar para el dise&ntilde;o de aplicaciones especificas para dispositivos 
+				m&oacute;viles, comprendiendo las diferencias existentes con las aplicaciones web 
+				tradicionales.
+			</li>
+		</ul>
+	</div>
+
+	<div id="footer">
+        <p>Dept. Ciencia de la Computación e IA</p>
+    </div>
+</body>
+</html>
+

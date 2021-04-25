@@ -1,0 +1,18 @@
+body {
+    padding: 3rem;
+}
+
+td > button{
+    height: 3rem;
+    width: 3rem;
+}
+
+.pantalla {
+    height: 3rem;
+    border: 1px solid black;
+}
+
+.pantalla > div {
+    font-size: 1.5rem;
+    text-align: center;
+}

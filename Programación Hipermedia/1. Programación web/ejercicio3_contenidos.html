@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/ejercicio3_css.css" />
+    <script type="text/javascript">
+		window.onload = function () {
+			const links = document.getElementsByTagName("a");
+			for (const link of links) {
+				if (link.href == document.URL) {
+					const parent = link.parentElement;
+					parent.classList.add("visited");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+    <header id="header">
+        <img src="imgs/logo.gif" alt="Logo máster"/>
+        <h1>PHDM</h1>
+    </header>
+
+    <nav id="nav">
+        <div class="navElement">
+            <a href="sesion01-ejercicio3.html">Inicio</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio3_contenidos.html">Contenidos</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio3_profesorado.html">Profesorado</a>
+        </div>
+    </nav>
+
+    <article id="content">
+        <p>
+            Se puede englobar los contenidos del curso en los siguientes bloques:
+        </p>
+        <ul>
+            <li>Introducción al dessarrollo web.</li>
+            <li>Introducción a JavaScript</li>
+            <li>Cordova / PhoneGap</li>
+            <li>Ionic</li>
+            <li>Programación de servidor: <em>Laravel y servicios REST</em></li>
+        </ul>
+    </article>
+
+    <footer id="footer">
+        <p>Dept. Ciencia de la Computación e IA</p>
+    </footer>
+</body>
+</html>

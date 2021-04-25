@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas</title>
+
+	<script type="text/javascript">
+		window.onload = function() 
+		{
+			const canvas = document.getElementById('myCanvas');
+    		canvas.width = 360
+			canvas.height = 240
+			if (!canvas || !canvas.getContext) {
+				return;
+  			}
+
+			const context = canvas.getContext('2d');
+  			if (!context) {
+    			return;
+  			}
+
+			context.fillStyle   = '#0000ff';
+			context.strokeStyle = '#ff0000';
+			context.lineWidth   = 4
+
+			// RECTÁNGULOS
+			context.fillRect(0, 0, 150, 50);
+    		context.strokeRect(0, 60, 150, 50);
+
+			// DIBUJAR PATH
+			context.beginPath();
+			context.moveTo(160,0);
+			context.lineTo(270,0);
+			context.lineTo(160,110);
+			context.lineTo(160,0);
+
+			context.stroke();
+			context.fill();
+		}
+	</script>
+</head>
+<body>
+    <canvas id="myCanvas" ></canvas>
+</body>
+</html>
+

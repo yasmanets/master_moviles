@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/calculadora_avanzada.css">
+    <script type="text/javascript" src="js/calculadora_avanzada.js"></script>
+    <title>Calculadora Avanzada</title>
+</head>
+<body>
+    <div class="calculadora">
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="pantalla">
+                        <div id="pantalla"></div>
+                    </td>
+                    <td>
+                        <button type="button" onclick="limpiar()">C</button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="button" onclick="setValue(7)">7</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(8)">8</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(9)">9</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue('/')">/</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="button" onclick="setValue(4)">4</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(5)">5</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(6)">6</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue('*')">*</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="button" onclick="setValue(1)">1</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(2)">2</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue(3)">3</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue('-')">-</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button type="button" onclick="setValue(0)">0</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue('.')">.</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="calcular()">=</button>
+                    </td>
+                    <td>
+                        <button type="button" onclick="setValue('+')">+</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    
+</body>
+</html>

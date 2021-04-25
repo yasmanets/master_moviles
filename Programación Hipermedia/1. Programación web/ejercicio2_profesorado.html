@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/ejercicio2_css.css" />
+    <script type="text/javascript">
+		window.onload = function () {
+			const links = document.getElementsByTagName("a");
+			for (const link of links) {
+				if (link.href == document.URL) {
+					const parent = link.parentElement;
+					parent.classList.add("visited");
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+    <div id="header">
+        <img src="imgs/logo.gif" alt="Logo máster"/>
+        <h1>PHDM</h1>
+    </div>
+
+    <div id="nav">
+        <div class="navElement">
+            <a href="sesion01-ejercicio2.html">Inicio</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio2_contenidos.html">Contenidos</a>
+        </div>
+        <div class="navElement">
+            <a href="ejercicio2_profesorado.html">Profesorado</a>
+        </div>
+    </div>
+
+    <div id="content">
+        <p>
+            Los profesores encargados de impartir el curso son:
+        </p>
+
+        <ul>
+            <li>
+                Antonio Javier Gallego Sánchez
+            </li>
+        </ul>
+    </div>
+
+    <div id="footer">
+        <p>Dept. Ciencia de la Computación e IA</p>
+    </div>
+</body>
+</html>

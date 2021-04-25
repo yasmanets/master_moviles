@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="videoclub"
+        color="light"
+        text=""
+        mode="ios">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ pelicula?.title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-img src="{{ pelicula?.poster }}"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ pelicula?.title }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><strong>Director: </strong>{{ pelicula?.director }}</p>
+      <p><strong>Año: </strong>{{ pelicula?.year }}</p>
+      <p><strong>Sinopsis: </strong>{{ pelicula?.synopsis }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

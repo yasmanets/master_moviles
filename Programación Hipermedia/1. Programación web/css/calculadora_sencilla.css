@@ -1,0 +1,28 @@
+body {
+    padding: 3rem;
+}
+
+.operandos, .resultado {
+    display: flex;
+    margin: .5rem 0rem .5rem 0rem
+}
+
+.operandos > p {
+    margin: 0rem .5rem 0rem .5rem
+}
+
+.resultado > p {
+    margin: 0rem .5rem 0rem .5rem
+}
+
+.error {
+    width: fit-content;
+    padding: 1rem;
+    margin: 1rem 0rem 0rem 0rem;
+    background-color: #ff000050;
+    border-radius: .5rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+

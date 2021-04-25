@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+.header {
+    background-color: rgb(0, 0, 255);
+    color: rgb(255, 255, 255);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    height: 25px;
+    background-color: rgb(192, 192, 192);
+}
+
+.card {
+    text-align: center;
+}
+
+/* Segunda página */
+.secondHeader {
+    background-color: rgb(0, 0, 255);
+    color: rgb(255, 255, 255);
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.secondHeader > a, .back {
+    color: rgb(255, 255, 255);
+}
+
+.secondHeader > a:hover, .back:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.btn-outline-primary {
+    border-color: rgb(255, 255, 255);
+    margin-right: .5rem;
+}

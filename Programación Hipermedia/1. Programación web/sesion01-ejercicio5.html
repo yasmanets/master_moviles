@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geolocalizaci&oacute;n</title>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true" ></script>
+	<script type="text/javascript">
+		function getGeolocation()
+		{
+			if (navigator.geolocation) 
+			{
+				// TODO OBTENER LA POSICIÓN ACTUAL, PASÁNDO COMO PARÁMETRO EL NOMBRE DE LA FUNCIÓN showPosition
+				navigator.geolocation.getCurrentPosition(showPosition)			
+			} else {
+				$('#nosoup').text("No funciona la Geolocalizaci&oacute;n");
+			}
+		}
+
+		function showPosition(position) 
+		{
+			var lat = position.coords.latitude;
+			var lng = position.coords.longitude;
+
+			$('#latitude').text(lat);
+			$('#longitude').text(lng);
+			var options = { zoom: 13, center: new google.maps.LatLng(lat, lng), mapTypeId: google.maps.MapTypeId.ROADMAP }
+			var map = new google.maps.Map($("#canvas").get(0), options);
+			var marker = new google.maps.Marker({ position: new google.maps.LatLng(lat, lng) });
+			marker.setMap(map);
+		}
+	</script>
+</head>
+<body>
+	<p>Ejemplo del uso de Geolocalizaci&oacute;n con HTML5</p>
+			
+	<table width="500" cellpadding="0" cellspacing="0">
+		<tr><td widtd="150"><strong>Latitud:</strong></td><td width="350"><div id="latitude"></div></td></tr>
+		<tr><td widtd="150"><strong>Longitud:</strong></td><td width="350"><div id="longitude"></div></td></tr>
+	</table>
+
+	<br />
+
+	<p><button id="show_position" onclick="getGeolocation()">D&oacute;nde estoy??</button>
+
+	<div id="nosoup" style="float:none; color: #882122; font-weight: bold; "></div></p>
+
+	<div id="canvas" style="width: 100%; height: 400px;"></div>
+</body>
+</html>
+

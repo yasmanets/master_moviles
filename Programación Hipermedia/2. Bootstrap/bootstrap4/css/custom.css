@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.col, [class*="col-"] {
+    padding: 0rem;
+}
+
+.row {
+    margin: 0rem;
+}
+
+.brand {
+    width: 30px;
+}
+
+footer {
+    background-color: #cecece;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* index */
+#carousel img {
+    max-height: 450px;
+    margin: 0 auto;
+}
+
+/* listado de coches */
+.card {
+    text-align: center;
+}

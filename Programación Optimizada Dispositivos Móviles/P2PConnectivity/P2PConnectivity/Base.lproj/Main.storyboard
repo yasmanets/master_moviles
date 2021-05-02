@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="P2PConnectivity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conectado a:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0YV-5y-UiT">
+                                <rect key="frame" x="20" y="350" width="147" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="UPR-jc-E1X"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Texto recibido:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfJ-qg-JO1">
+                                <rect key="frame" x="20" y="401" width="147" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrU-k1-HWf">
+                                <rect key="frame" x="149" y="350" width="147" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jl-d5-1ts">
+                                <rect key="frame" x="149" y="401" width="147" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="texto a envíar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-bo-utp">
+                                <rect key="frame" x="20" y="111" width="293" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWq-jC-chs">
+                                <rect key="frame" x="352" y="103" width="42" height="50"/>
+                                <state key="normal" title="Enviar"/>
+                                <connections>
+                                    <action selector="sendText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dh3-n1-J0w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0YV-5y-UiT" firstAttribute="leading" secondItem="rfJ-qg-JO1" secondAttribute="leading" id="0G9-CS-dYO"/>
+                            <constraint firstItem="0YV-5y-UiT" firstAttribute="firstBaseline" secondItem="rrU-k1-HWf" secondAttribute="firstBaseline" id="14Q-lH-340"/>
+                            <constraint firstItem="0YV-5y-UiT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8DS-b8-dtU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0YV-5y-UiT" secondAttribute="trailing" constant="247" id="BK9-Do-lw5"/>
+                            <constraint firstItem="bjS-bo-utp" firstAttribute="leading" secondItem="0YV-5y-UiT" secondAttribute="leading" id="D3Y-ll-Wum"/>
+                            <constraint firstItem="rfJ-qg-JO1" firstAttribute="baseline" secondItem="4Jl-d5-1ts" secondAttribute="baseline" id="EbF-wc-v73"/>
+                            <constraint firstItem="rrU-k1-HWf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="149" id="J01-uZ-1Ua"/>
+                            <constraint firstItem="rfJ-qg-JO1" firstAttribute="firstBaseline" secondItem="4Jl-d5-1ts" secondAttribute="firstBaseline" id="KE6-Vp-UzT"/>
+                            <constraint firstItem="fWq-jC-chs" firstAttribute="leading" secondItem="bjS-bo-utp" secondAttribute="trailing" constant="39" id="Ojk-kZ-NSX"/>
+                            <constraint firstItem="bjS-bo-utp" firstAttribute="centerY" secondItem="fWq-jC-chs" secondAttribute="centerY" id="WRs-R7-oya"/>
+                            <constraint firstItem="0YV-5y-UiT" firstAttribute="baseline" secondItem="rrU-k1-HWf" secondAttribute="baseline" id="dFO-NL-Je4"/>
+                            <constraint firstItem="rrU-k1-HWf" firstAttribute="trailing" secondItem="4Jl-d5-1ts" secondAttribute="trailing" id="g7J-J6-mF3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rfJ-qg-JO1" secondAttribute="bottom" constant="299" id="his-nP-uNP"/>
+                            <constraint firstItem="bjS-bo-utp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="111" id="jGw-gf-7M7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rrU-k1-HWf" secondAttribute="trailing" constant="118" id="o64-ei-xad"/>
+                            <constraint firstItem="bjS-bo-utp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qfc-kU-syn"/>
+                            <constraint firstItem="0YV-5y-UiT" firstAttribute="trailing" secondItem="rfJ-qg-JO1" secondAttribute="trailing" id="sPm-yk-ke7"/>
+                            <constraint firstItem="fWq-jC-chs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vdb-XT-PPr"/>
+                            <constraint firstItem="rrU-k1-HWf" firstAttribute="leading" secondItem="4Jl-d5-1ts" secondAttribute="leading" id="xXO-Wg-04W"/>
+                            <constraint firstItem="rfJ-qg-JO1" firstAttribute="top" secondItem="rrU-k1-HWf" secondAttribute="bottom" constant="15" id="yEW-eY-a6s"/>
+                            <constraint firstItem="fWq-jC-chs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="103" id="zsM-gy-MDe"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="connectionsLabel" destination="rrU-k1-HWf" id="dhL-aT-PCr"/>
+                        <outlet property="textRecivedLabel" destination="4Jl-d5-1ts" id="qNJ-os-6mG"/>
+                        <outlet property="textToSend" destination="bjS-bo-utp" id="2Da-X8-QLy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105.79710144927537" y="116.57608695652175"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

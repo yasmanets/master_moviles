@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        android:title="Ajustes básicos"
+        android:key="basic_settings" >
+        <ListPreference
+            android:title="Tamaño"
+            android:dialogTitle="Selecciona el tamaño del texto"
+            android:summary="%s"
+            android:key="sizeList"
+            android:entries="@array/size_entries"
+            android:entryValues="@array/size_entries"
+            android:defaultValue="32"/>
+
+        <ListPreference
+            android:title="Color del texto"
+            android:dialogTitle="Selecciona el color del texto"
+            android:summary="%s"
+            android:key="colorList"
+            android:entries="@array/color_entries"
+            android:entryValues="@array/color_values" />
+
+        <ListPreference
+            android:title="Color de fondo"
+            android:dialogTitle="Selecciona el color de fondo"
+            android:summary="%s"
+            android:key="backgroundList"
+            android:entries="@array/color_entries"
+            android:entryValues="@array/color_values" />
+
+        <SwitchPreference
+            android:title="¿Negrita?"
+            android:summary="Activa para poner el texto en negrita"
+            android:defaultValue="false"
+            android:key="boldText" />
+
+        <CheckBoxPreference
+            android:title="¿Cursiva?"
+            android:summary="Marca para poner el texto en cursiva"
+            android:defaultValue="false"
+            android:key="italicText" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Ajustes avanzados"
+        android:key="advanced_settings" >
+
+        <com.mastermovilesua.persistencia.sharedpreferences2.FloatSeekBarPreference
+            android:key="alphaValue"
+            android:title="Transparencia"
+            android:defaultValue="1.0"
+            app:minValue="0.0"
+            app:maxValue="1.0"
+            app:valueSpacing="0.1"/>
+
+        <SeekBarPreference
+            android:title="Rotación"
+            android:key="rotation"
+            app:showSeekBarValue="true"
+            android:max="360"
+            android:defaultValue="90" />
+
+
+    </PreferenceCategory>
+</PreferenceScreen>

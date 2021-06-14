@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBAction func sendText(_ sender: Any) {
         let text = self.textToSend.text ?? "Texto vacío"
         self.sendTextService.send(text: text)
+        print("Se envía")
     }
 }
 
@@ -43,6 +44,7 @@ extension ViewController: SendTextServiceDelegate {
         OperationQueue.main.addOperation {
             synthesizer.speak(utterance)
             self.textRecivedLabel.text = text
+            print("Se recive"ex)
         }
     }
 }

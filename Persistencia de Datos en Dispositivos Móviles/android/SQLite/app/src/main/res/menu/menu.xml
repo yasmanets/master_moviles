@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/backup"
+        android:title="Crear backup"
+        android:icon="@drawable/backup"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/restore"
+        android:title="Restaurar backup"
+        android:icon="@drawable/restore"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/users"
+        android:title="Gestión usuarios"
+        android:icon="@drawable/users"
+        app:showAsAction="never" />
+</menu>

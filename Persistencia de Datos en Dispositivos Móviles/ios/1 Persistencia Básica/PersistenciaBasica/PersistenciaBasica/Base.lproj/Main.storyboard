@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PersistenciaBasica" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Introduce un texto" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="aIu-rn-q3N">
+                                <rect key="frame" x="67" y="167" width="241" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5l2-eE-gUz">
+                                <rect key="frame" x="67" y="303" width="241" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sq5-g6-OHB">
+                                <rect key="frame" x="139" y="373" width="97" height="30"/>
+                                <state key="normal" title="Guardar"/>
+                                <connections>
+                                    <action selector="savePreferences:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7f6-wG-CpW"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Sq5-g6-OHB" firstAttribute="centerX" secondItem="5l2-eE-gUz" secondAttribute="centerX" id="3ff-H2-BtI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Sq5-g6-OHB" secondAttribute="bottom" constant="264" id="AJ9-kS-nLQ"/>
+                            <constraint firstItem="aIu-rn-q3N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="167" id="MXT-fG-HEN"/>
+                            <constraint firstItem="Sq5-g6-OHB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="139" id="W3c-jL-Uex"/>
+                            <constraint firstItem="aIu-rn-q3N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="WST-cm-glo"/>
+                            <constraint firstItem="Sq5-g6-OHB" firstAttribute="top" secondItem="5l2-eE-gUz" secondAttribute="bottom" constant="49" id="gR3-hX-q2X"/>
+                            <constraint firstItem="aIu-rn-q3N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gvT-6c-I4F"/>
+                            <constraint firstItem="Sq5-g6-OHB" firstAttribute="centerX" secondItem="aIu-rn-q3N" secondAttribute="centerX" id="jcL-7I-JpE"/>
+                            <constraint firstItem="aIu-rn-q3N" firstAttribute="trailing" secondItem="5l2-eE-gUz" secondAttribute="trailing" id="qFp-j0-YyN"/>
+                            <constraint firstItem="5l2-eE-gUz" firstAttribute="top" secondItem="aIu-rn-q3N" secondAttribute="bottom" constant="8" id="suG-zf-NyZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="fechaLabel" destination="5l2-eE-gUz" id="DCF-4h-RZa"/>
+                        <outlet property="textView" destination="aIu-rn-q3N" id="4wQ-y3-0fA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

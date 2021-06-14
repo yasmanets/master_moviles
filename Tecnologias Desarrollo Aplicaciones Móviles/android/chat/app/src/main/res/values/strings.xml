@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">chat</string>
+    <string name="destinyIP">IP de destino</string>
+    <string name="startChat">Iniciar chat</string>
+    <string name="send">Enviar</string>
+    <string name="serverInitError">Se ha producido un error al iniciar el servidor</string>
+    <string name="clientDisconnected">Cliente desconectado</string>
+    <string name="serverDisconnected">Servidor desconectado</string>
+    <string name="emptyMessage"><![CDATA[<Mensaje vacío>]]></string>
+</resources>

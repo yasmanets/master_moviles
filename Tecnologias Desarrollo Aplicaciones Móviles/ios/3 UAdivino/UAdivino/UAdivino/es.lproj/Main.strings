@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "Ask a question out loud and UAdivino will give you the answer\n"; ObjectID = "Ju9-hh-zra"; */
+"Ju9-hh-zra.text" = "Formula una pregunta en voz alta y UAdivino te dará la respuesta";
+
+/* Class = "UIButton"; normalTitle = "Get answer"; ObjectID = "qPM-mN-6Qc"; */
+"qPM-mN-6Qc.normalTitle" = "Obtener respuesta";

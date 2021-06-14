@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iMoneda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxZ-ae-x3M">
+                                <rect key="frame" x="134" y="163" width="106" height="30"/>
+                                <state key="normal" title="Lanzar moneda"/>
+                                <connections>
+                                    <action selector="onClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PEz-dM-wFq"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bua-EW-Gc8">
+                                <rect key="frame" x="56" y="201" width="263" height="273"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsJ-Gj-f89">
+                                <rect key="frame" x="56" y="501" width="263" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bxZ-ae-x3M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="163" id="19a-yn-fjJ"/>
+                            <constraint firstItem="fsJ-Gj-f89" firstAttribute="top" secondItem="bua-EW-Gc8" secondAttribute="bottom" constant="27" id="3I6-Td-k7D"/>
+                            <constraint firstItem="bua-EW-Gc8" firstAttribute="top" secondItem="bxZ-ae-x3M" secondAttribute="bottom" constant="8" id="8hg-aO-oqH"/>
+                            <constraint firstItem="bxZ-ae-x3M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="134" id="GKP-et-aBM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fsJ-Gj-f89" secondAttribute="bottom" constant="145" id="HCa-0c-mPF"/>
+                            <constraint firstItem="bua-EW-Gc8" firstAttribute="trailing" secondItem="fsJ-Gj-f89" secondAttribute="trailing" id="Qvr-gr-vE4"/>
+                            <constraint firstItem="bxZ-ae-x3M" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dzA-g3-SKf"/>
+                            <constraint firstItem="bxZ-ae-x3M" firstAttribute="centerX" secondItem="bua-EW-Gc8" secondAttribute="centerX" id="gPV-Rj-Jk8"/>
+                            <constraint firstItem="bua-EW-Gc8" firstAttribute="leading" secondItem="fsJ-Gj-f89" secondAttribute="leading" id="ivc-CZ-KFU"/>
+                            <constraint firstItem="bua-EW-Gc8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="56" id="tpY-fb-T3Q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="bua-EW-Gc8" id="zTr-74-dCN"/>
+                        <outlet property="resultLabel" destination="fsJ-Gj-f89" id="qdW-DE-jvR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="138.98050974512745"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UAdivino" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ask a question out loud and UAdivino will give you the answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ju9-hh-zra">
+                                <rect key="frame" x="16" y="262" width="343" height="69"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhY-Tc-Ast">
+                                <rect key="frame" x="67" y="418" width="240" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="hda-o3-2bN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPM-mN-6Qc">
+                                <rect key="frame" x="117" y="360" width="141" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tDv-wF-T8I"/>
+                                </constraints>
+                                <state key="normal" title="Get answer"/>
+                                <connections>
+                                    <action selector="botonPulsado:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x0M-pR-nIu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ju9-hh-zra" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="262" id="7HP-uP-tiw"/>
+                            <constraint firstItem="qPM-mN-6Qc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="117" id="9lA-Lq-OsF"/>
+                            <constraint firstItem="WhY-Tc-Ast" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="9sw-cu-I2M"/>
+                            <constraint firstItem="Ju9-hh-zra" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="a1M-ka-DYw"/>
+                            <constraint firstItem="Ju9-hh-zra" firstAttribute="centerX" secondItem="qPM-mN-6Qc" secondAttribute="centerX" id="bMV-fe-xWj"/>
+                            <constraint firstItem="WhY-Tc-Ast" firstAttribute="top" secondItem="qPM-mN-6Qc" secondAttribute="bottom" constant="28" id="kUg-MJ-NGN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WhY-Tc-Ast" secondAttribute="bottom" constant="220" id="kjO-V2-4aO"/>
+                            <constraint firstItem="qPM-mN-6Qc" firstAttribute="centerX" secondItem="WhY-Tc-Ast" secondAttribute="centerX" id="mBA-WD-Gvt"/>
+                            <constraint firstItem="Ju9-hh-zra" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="pP2-ot-tfS"/>
+                            <constraint firstItem="qPM-mN-6Qc" firstAttribute="top" secondItem="Ju9-hh-zra" secondAttribute="bottom" constant="29" id="sWB-Rx-yJW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="labelRespuesta" destination="WhY-Tc-Ast" id="A0R-VH-dLu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.40000000000001" y="138.0809595202399"/>
+        </scene>
+    </scenes>
+</document>

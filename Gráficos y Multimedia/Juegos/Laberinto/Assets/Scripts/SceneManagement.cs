@@ -28,6 +28,12 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+    public void restartLevel(string scene)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(scene);
+    }
+
     public void quitGame()
     {
         #if UNITY_EDITOR

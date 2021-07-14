@@ -5,18 +5,27 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float velocidad;
-    public Text countText;
+    public string level;
     public Text winText;
-
+    public Text coinText;
+    public Text heartText;
+    public GameObject panel;
+    public GameObject startButton;
+    public GameObject restartButton;
+    public GameObject exitButton;
+    public GameObject continueButton;
 	private Rigidbody rb;
-    private int contador;
+
+    public LifeManagement lifeManagement;
+    private GameObject board;
+    private Vector3 boardPosition;
 
 	void Start() 
 	{
 		rb = GetComponent<Rigidbody>();
-        contador = 0;
-        SetCountText();
-        winText.text = "";
+        board = GameObject.Find(level);
+        
+        hideCanvas();
 	}
 
     // Update is called once per frame
@@ -28,47 +37,49 @@ public class PlayerController : MonoBehaviour {
         Vector3 movimiento = new Vector3(posH, 0.0f, posV);
 
         rb.AddForce(movimiento * velocidad);
-
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-            if (other.gameObject.CompareTag("mono"))
-            {
-                other.gameObject.SetActive(false);
-                contador = contador + 1;
-                SetCountText();
-            }
-
-    }
-
-    void SetCountText()
-    {
-            countText.text = "Contador: " + contador.ToString();
-            if (contador >= 4)
-            {
-                winText.text = "Ganaste!!";
-            }
     }
 
     private void OnTriggerExit(Collider other)
     {
 		if (other.gameObject.CompareTag("tablero"))
 		{
-			winText.text = "Perdiste?!! :(";
-			Invoke("QuitGame", 1f);
+            if (LifeManagement.vidas > 0)
+            {
+                Debug.Log(board.name);
+                boardPosition = other.gameObject.transform.position;
+                displayCanvas("Te has caído!");
+            }
+            lifeManagement.restarVida();
 		}
 	}
 
-	void QuitGame()
-	{
-		#if UNITY_EDITOR
-		    UnityEditor.EditorApplication.isPlaying = false;
-		#elif UNITY_WEBPLAYER
-		    Application.OpenURL(webplayerQuitURL);
-		#else
-		    Application.Quit();
-		#endif
-	}
+    public void continueGame()
+    {
+        hideCanvas();
+        transform.position = new Vector3(boardPosition.x + 0.1f, 0.1f, boardPosition.z);
+        board.transform.eulerAngles = new Vector3(-90, 0, 0);
+    }
+
+    private void hideCanvas()
+    {
+        Time.timeScale = 1f;
+        winText.enabled = false;
+        restartButton.SetActive(false);
+        startButton.SetActive(false);
+        exitButton.SetActive(false);
+        continueButton.SetActive(false);
+        panel.SetActive(false);
+    }
+
+    private void displayCanvas(string text)
+    {
+        Time.timeScale = 0f;
+        winText.enabled = true;
+        restartButton.SetActive(true);
+        exitButton.SetActive(true);
+        continueButton.SetActive(true);
+        panel.SetActive(true);
+        winText.text = text;
+    }
 
 }

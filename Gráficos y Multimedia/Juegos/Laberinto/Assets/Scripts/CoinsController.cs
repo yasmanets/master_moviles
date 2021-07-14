@@ -11,6 +11,7 @@ public class CoinsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CoinsController.coins = 0;
         actualizarCoins();
     }
 

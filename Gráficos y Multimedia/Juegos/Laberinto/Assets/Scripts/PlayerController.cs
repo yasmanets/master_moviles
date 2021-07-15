@@ -45,7 +45,6 @@ public class PlayerController : MonoBehaviour {
 		{
             if (LifeManagement.vidas > 0)
             {
-                Debug.Log(board.name);
                 boardPosition = other.gameObject.transform.position;
                 displayCanvas("Te has caído!");
             }

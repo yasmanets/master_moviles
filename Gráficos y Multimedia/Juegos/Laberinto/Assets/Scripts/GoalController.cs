@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GoalController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GoalController : MonoBehaviour
     public GameObject nextButton;
     public GameObject exitButton;
     public Text winText;
+
+    private static string finalLevel = "level5";
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +36,14 @@ public class GoalController : MonoBehaviour
         if (collider.gameObject.CompareTag("player"))
         {
             AudioSource.PlayClipAtPoint(victoryAudio, transform.position);
-            Invoke("WinGame", 1f);
+            if (SceneManager.GetActiveScene().name != finalLevel)
+            {
+                Invoke("WinGame", 1f);
+            }
+            else
+            {
+                Invoke("FinishGame", 1f);
+            }
         }
     }
 
@@ -47,6 +57,18 @@ public class GoalController : MonoBehaviour
         panel.SetActive(true);
         
         winText.text = "Nivel Superado!";
+        Time.timeScale = 0f;
+    }
+
+    void FinishGame()
+    {
+        coinText.enabled = false;
+        heartText.enabled = false;
+        winText.enabled = true;
+        exitButton.SetActive(true);
+        panel.SetActive(true);
+        
+        winText.text = "Has acabdo el jeugo!!";
         Time.timeScale = 0f;
     }
 }
